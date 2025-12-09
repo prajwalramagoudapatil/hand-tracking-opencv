@@ -1,13 +1,6 @@
 import numpy as np
-# import sys
 import tensorflow as tf
-# import os
-from threading import Thread
-# from datetime import datetime
 import cv2
-# from utils import label_map_util
-from collections import defaultdict
-
 
 PATH_TO_CKPT = 'hand_inference_graph/frozen_inference_graph.pb'
 
@@ -67,3 +60,4 @@ def draw_box_on_image(num_hands_detect, score_thresh, scores, boxes, im_width, i
             p1 = (int(left), int(top))
             p2 = (int(right), int(bottom))
             cv2.rectangle(image_np, p1, p2, (77, 255, 9), 3, 1)
+
