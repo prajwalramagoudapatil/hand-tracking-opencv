@@ -3,7 +3,7 @@ import numpy as np
 from handtracking_model import load_inference_graph, detect_objects, draw_box_on_image
 
 MIN_CONTOUR_AREA = 1000
-MAX_CONTOUR_AREA = 40000
+MAX_CONTOUR_AREA = 48000
 WARNING_PX = 100          
 DANGER_PX = 10 
 
@@ -122,17 +122,17 @@ while True:
         
         state = "NO HAND"
         color = (200, 200, 200)
-        if dist is None:
+        if min_dist is None:
             state = "NO HAND"
             color = (180, 180, 180)
         else:
-            if dist == 0:
+            if min_dist <= 3:
                 state = "DANGER DANGER"
                 color = (0, 0, 255)
-            elif dist <= DANGER_PX:
-                state = "DANGER DANGER"
-                color = (0, 0, 255)
-            elif dist <= WARNING_PX:
+            elif min_dist <= DANGER_PX:
+                state = "DANGER"
+                color = (0, 20, 220)
+            elif min_dist <= WARNING_PX:
                 state = "WARNING"
                 color = (0, 165, 255)
             else:
@@ -148,3 +148,4 @@ while True:
     cv2.imshow('Raama', frame)
 
 cv2.destroyAllWindows()
+
