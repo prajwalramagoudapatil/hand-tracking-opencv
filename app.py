@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from handtracking_model import load_inference_graph, detect_objects, draw_box_on_image
+from utils import load_inference_graph, detect_objects, draw_box_on_image
 
 MIN_CONTOUR_AREA = 1000
 MAX_CONTOUR_AREA = 48000
@@ -148,4 +148,5 @@ while True:
     cv2.imshow('Raama', frame)
 
 cv2.destroyAllWindows()
+
 
